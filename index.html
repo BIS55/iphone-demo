@@ -70,7 +70,7 @@
 
 /* Интерактивные экраны перевода; все действия локальные, никаких запросов к банку */
 button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disabled{opacity:.44;cursor:not-allowed}
-.tab{cursor:pointer}.tab:focus-visible,.action-tile:focus-visible,.action-primary:focus-visible{outline:2px solid #45cc74}
+.tabs{z-index:10}.tab{cursor:pointer}.tab:focus-visible,.action-tile:focus-visible,.action-primary:focus-visible{outline:2px solid #45cc74}
 .app-view{position:absolute;inset:0;z-index:5;overflow-y:auto;overscroll-behavior:contain;background:#111;padding:calc(env(safe-area-inset-top) + 50px) 16px calc(env(safe-area-inset-bottom) + 115px);scrollbar-width:none}
 .app-view[hidden]{display:none!important}
 #payments-view{background:linear-gradient(180deg,#182c28 0%,#101515 27%,#111 47%,#111 100%)}
