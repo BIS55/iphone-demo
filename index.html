@@ -39,13 +39,13 @@
 .cards{display:flex;gap:8px;overflow-x:auto;padding:0 16px 0;scroll-snap-type:x mandatory}
 .smallstack{width:60px;min-width:60px;display:flex;flex-direction:column;gap:9px}
 .smallstack>div{height:85px;border-radius:17px;display:grid;place-items:center;font-size:30px;color:#fff}
-.card{position:relative;scroll-snap-align:start;min-width:132px;width:132px;height:177px;border-radius:17px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.card:nth-of-type(3){background:#ffffff28}
+.card{position:relative;scroll-snap-align:start;flex:0 0 151px;width:151px;height:177px;border-radius:17px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.card.primary{flex-basis:172px;width:172px}.card:nth-of-type(3){background:#ffffff28}
 .bankmark{width:28px;height:23px;background:linear-gradient(135deg,#82f88a 0%,#06c6c5 54%,#08b355 100%);border-radius:7px;display:block;position:relative}
 .bankmark:before{content:"";position:absolute;right:3px;bottom:3px;background:#0f8f53;width:13px;height:5px;border-radius:4px}
 .bankmark:after{content:"";position:absolute;top:4px;left:4px;background:#a5f8c7;width:5px;height:5px;border-radius:50%}
 .card small{font-size:12px;color:#a5bbb5;display:block;margin-top:4px}
-.amount{font-size:18px;font-weight:650;white-space:nowrap}
+.amount{font-size:16px;font-weight:650;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
 .cred-title{color:#a9d0cf;font-size:12px;line-height:1.5}
 .promo{margin:22px 8px 12px;border-radius:18px;background:#1c1d1d;padding:17px 15px;min-height:113px;display:flex;align-items:center;justify-content:space-between;gap:8px}
 .promo strong{font-size:16px}.promo p{margin:7px 0 0;font-size:13px;color:#aaa;line-height:1.5}
@@ -81,22 +81,22 @@
 </header>
 <section class="notice">
  <span class="miniicon">●</span>
- <p><strong>Внесите 6 800 ₽ до 30.11</strong>Платёж по учебной карте</p>
+ <p><strong id="due-banner">Внесите 8 924,35 ₽ до 30.11</strong>Платёж по кредитной карте</p>
  <span class="cross" aria-hidden="true">×</span>
 </section>
 <div class="wallet-head"><h1>Кошелёк <span>›</span></h1><span class="dots" aria-hidden="true">⋯</span></div>
 <section class="cards" aria-label="Макет карточек">
  <div class="smallstack"><div>▣</div><div>♢</div></div>
- <div class="card"><div><span class="bankmark"></span><small>0000</small></div><div><div class="amount">0 ₽</div><small>Счёт •• 0000</small></div></div>
- <div class="card"><div class="cred-title">Внесите до 30.11<br>6 800 ₽<br><br>▰</div><div><div class="amount">123 456 ₽</div><small>Кредитная •• 0000</small></div></div>
+ <div class="card primary"><div><span class="bankmark"></span><small id="first-card-digits">6699</small></div><div><div id="first-balance" class="amount">8 546 219,87 ₽</div><small id="first-account-name">Счёт •• 3797</small></div></div>
+ <div class="card"><div class="cred-title">Внесите до 30.11<br><span id="due-card">8 924,35 ₽</span><br><br>▰</div><div><div id="credit-balance" class="amount">384 219,62 ₽</div><small id="credit-name">Кредитная •• 8353</small></div></div>
  <div class="card"><div class="cred-title"><span class="bankmark"></span><br>Специальные предложения</div><div><div class="amount">ДЕМО</div><small>Не настоящий счёт</small></div></div>
 </section>
 <section class="promo"><div><strong>Накопления от 7 500 ₽</strong><p>Узнайте больше<br>о своих возможностях</p></div><span class="cta">Узнать</span></section>
 <section class="history">
  <div class="hrow"><h2>История ⌃</h2><span class="all">Все</span></div>
- <div class="trans"><span class="round">◉</span><div class="name">Демонстрационный платёж<small>Сегодня · Прочие списания</small></div><div class="sum">1 250 ₽</div></div>
- <div class="trans"><span class="round">↑</span><div class="name">Платёж в приложении<small>Сегодня · Прочие списания</small></div><div class="sum">2 300 ₽</div></div>
- <div class="trans"><span class="round">↔</span><div class="name">Счёт •• 0000 → Карта •• 0000<small>Перевод между счетами</small></div><div class="sum">5 000 ₽</div></div>
+ <div class="trans"><span class="round">◉</span><div class="name">Оплата услуг<small>Сегодня · Прочие списания</small></div><div id="transaction-1" class="sum">1 429,00 ₽</div></div>
+ <div class="trans"><span class="round">↑</span><div class="name">Интернет и связь<small>Сегодня · Оплата услуг</small></div><div id="transaction-2" class="sum">890,00 ₽</div></div>
+ <div class="trans"><span class="round">↔</span><div id="transfer-name" class="name">Счёт •• 3797 → Карта •• 8353<small>Перевод между счетами</small></div><div id="transaction-3" class="sum">20 000 ₽</div></div>
 </section>
 <p class="disclaimer">Визуальный макет. Данные вымышлены. Банковские операции недоступны.</p>
 </div>
@@ -124,6 +124,35 @@
 </div>
 </main>
 <script>
+// Все цифры здесь вымышлены. Случайные значения создаются заново при запуске.
+(function initDemo(){
+  const random = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
+  const rub = (kopecks, fraction=true) => new Intl.NumberFormat('ru-RU',{
+    minimumFractionDigits:fraction?2:0,
+    maximumFractionDigits:fraction?2:0
+  }).format(kopecks/100).replace(/\u00a0|\u202f/g,' ')+' ₽';
+  const digits = () => String(random(1000,9999));
+  const set = (id,value) => { const el=document.getElementById(id); if(el) el.textContent=value; };
+  const accountDigits=digits();
+  const creditDigits=digits();
+  // Начальный счёт всегда больше 8 млн ₽.
+  const firstBalance=random(805000000,1495000000);
+  const creditBalance=random(22500000,48500000);
+  const due=random(610000,1470000);
+  set('first-balance',rub(firstBalance));
+  set('credit-balance',rub(creditBalance));
+  set('first-card-digits',accountDigits);
+  set('first-account-name','Счёт •• '+accountDigits);
+  set('credit-name','Кредитная •• '+creditDigits);
+  set('due-banner','Внесите '+rub(due)+' до 30.11');
+  set('due-card',rub(due));
+  set('transaction-1',rub(random(89500,685000)));
+  set('transaction-2',rub(random(49000,225000)));
+  set('transaction-3',rub(random(1000000,6000000),false));
+  // Сумма и последние цифры перевода соответствуют карточкам выше.
+  const transfer=document.getElementById('transfer-name');
+  transfer.firstChild.textContent='Счёт •• '+accountDigits+' → Карта •• '+creditDigits;
+})();
 window.setTimeout(()=>document.getElementById('launch').classList.add('hide'),1300);
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 </script>
