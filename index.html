@@ -10,7 +10,7 @@
 <meta name="description" content="Макет финансового интерфейса с вымышленными данными. Не банковское приложение.">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="./icon.svg">
-<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="apple-touch-icon" sizes="128x128" href="./online-icon-180.png">
 <title>Кошелёк — Макет</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;color-scheme:dark}
@@ -173,7 +173,7 @@ button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disa
 <section id="payments-view" class="app-view" hidden aria-label="Платежи">
  <header class="view-top"><div class="avatar">●</div><div class="search"><i class="mag"></i>Поиск</div><span class="top-icon">✧</span></header>
  <div class="heading-row"><h2>Платежи</h2><span style="font-size:24px">◉　⋯</span></div>
- <div class="panel total-panel"><div class="round">⌂</div><div><strong id="payment-total">116 937,54 ₽</strong><span class="muted">Дом · 4 счёта</span></div></div>
+ <div class="panel total-panel"><div class="round">⌂</div><div><strong id="payment-total">116 937,54 ₽</strong><span class="muted">Дом · 2 счёта</span></div></div>
  <button type="button" class="action-wide">Посмотреть все</button>
  <div class="action-grid">
   <button class="action-tile" type="button" id="scan-qr"><span class="tile-icon">▧</span><span>Сканировать QR или телефон</span></button>
@@ -274,6 +274,7 @@ button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disa
   set('credit-name','Кредитная •• '+creditDigits);
   set('reserve-balance',rub(reserveBalance));
   set('reserve-name','Счёт •• '+reserveDigits);
+  set('payment-total',rub(firstBalance+reserveBalance));
   window.mockAccounts=[{digits:accountDigits,kopecks:firstBalance},{digits:reserveDigits,kopecks:reserveBalance}];
   set('due-banner','Внесите '+rub(due)+' до 30.11');
   set('due-card',rub(due));
