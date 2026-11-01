@@ -6,12 +6,12 @@
 <meta name="theme-color" content="#001f1b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Кошелёк ДЕМО">
-<meta name="description" content="Демонстрационный макет интерфейса. Не банковское приложение.">
+<meta name="apple-mobile-web-app-title" content="Кошелёк — Макет">
+<meta name="description" content="Макет финансового интерфейса с вымышленными данными. Не банковское приложение.">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="./icon.svg">
 <link rel="apple-touch-icon" href="./icon-180.png">
-<title>Кошелёк — ДЕМО</title>
+<title>Кошелёк — Макет</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;color-scheme:dark}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}
@@ -62,7 +62,7 @@
 .tabs{position:absolute;bottom:0;left:0;right:0;height:calc(73px + env(safe-area-inset-bottom));padding:12px 7px calc(9px + env(safe-area-inset-bottom));background:#1a1a1b;display:flex;justify-content:space-around;align-items:flex-start}
 .tab{width:20%;text-align:center;color:#858585;font-size:10px;white-space:nowrap}
 .tab b{display:block;font-size:23px;font-weight:400;height:28px;color:inherit}.tab.active{color:#29ae50}.tab.active span{color:white}
-#launch{position:absolute;z-index:50;inset:0;background:#000;display:grid;place-items:center;opacity:1;transition:opacity .35s ease;pointer-events:none}
+#stamp{position:absolute;z-index:20;right:12px;bottom:calc(78px + env(safe-area-inset-bottom));border-radius:8px;background:rgba(0,0,0,.86);border:1px solid #78e1ac;color:#b1ffd2;font-weight:800;letter-spacing:1.2px;font-size:12px;padding:6px 9px;pointer-events:none}#launch{position:absolute;z-index:50;inset:0;background:#000;display:grid;place-items:center;opacity:1;transition:opacity .35s ease;pointer-events:none}
 #launch.hide{opacity:0}.emblem{width:92px;height:92px}
 .disclaimer{font-size:10px;color:#bfd2c4;opacity:.7;margin:14px 16px 0}
 @media(min-width:600px){#screen{border:1px solid #444;border-radius:14px;margin:10px auto;height:calc(100dvh - 20px)}}
@@ -71,7 +71,7 @@
 </head>
 <body>
 <main id="screen">
-<div id="page" aria-label="Демонстрационный финансовый интерфейс">
+<div id="page" aria-label="Макет финансового интерфейса">
 <header class="top">
  <div class="avatar" aria-hidden="true">♟</div>
  <div class="search"><i class="mag"></i><span>Поиск</span></div>
@@ -88,7 +88,7 @@
  <div class="smallstack"><div>▣</div><div>♢</div></div>
  <div class="card primary"><div><span class="bankmark"></span><small id="first-card-digits">6699</small></div><div><div id="first-balance" class="amount">8 546 219,87 ₽</div><small id="first-account-name">Счёт •• 3797</small></div></div>
  <div class="card"><div class="cred-title">Внесите до 30.11<br><span id="due-card">8 924,35 ₽</span><br><br>▰</div><div><div id="credit-balance" class="amount">384 219,62 ₽</div><small id="credit-name">Кредитная •• 8353</small></div></div>
- <div class="card"><div class="cred-title"><span class="bankmark"></span><br>Специальные предложения</div><div><div class="amount">ДЕМО</div><small>Не настоящий счёт</small></div></div>
+ <div class="card"><div class="cred-title"><span class="bankmark"></span><br>Специальные предложения</div><div><div class="amount">МАКЕТ</div><small>Не настоящий счёт</small></div></div>
 </section>
 <section class="promo"><div><strong>Накопления от 7 500 ₽</strong><p>Узнайте больше<br>о своих возможностях</p></div><span class="cta">Узнать</span></section>
 <section class="history">
@@ -106,7 +106,8 @@
  <div class="tab"><b>▣</b><span>Платежи</span></div>
  <div class="tab"><b>▤</b><span>Кредиты</span></div>
 </nav>
-<div id="launch" role="img" aria-label="Заставка демонстрационного приложения">
+<div id="stamp" aria-label="Вымышленные данные">МАКЕТ</div>
+<div id="launch" role="img" aria-label="Заставка макета приложения">
 <svg class="emblem" viewBox="0 0 200 200" aria-hidden="true">
 <defs><linearGradient id="a" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#a3d755"/><stop offset="1" stop-color="#33afd2"/></linearGradient></defs>
 <g transform="translate(100 100)">
@@ -123,7 +124,7 @@
 </main>
 <script>
 // Все цифры здесь вымышлены. Случайные значения создаются заново при запуске.
-(function initDemo(){
+(function initMock(){
   const random = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
   const rub = (kopecks, fraction=true) => new Intl.NumberFormat('ru-RU',{
     minimumFractionDigits:fraction?2:0,
