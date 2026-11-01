@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "Кошелёк — ДЕМО",
+  "short_name": "Кошелёк",
+  "description": "Демонстрационный финансовый интерфейс без банковских функций",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#002722",
+  "icons": [
+    {
+      "src": "./icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
