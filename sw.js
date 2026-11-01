@@ -1,5 +1,5 @@
 // Cache the mock for offline use without freezing old balances or site updates.
-const CACHE = "wallet-mock-v5";
+const CACHE = "wallet-mock-v6";
 const ASSETS = ["./","./index.html","./manifest.webmanifest","./icon.svg","./online-icon-180.png"];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
