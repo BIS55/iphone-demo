@@ -129,6 +129,109 @@ button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disa
 #result-view .action-primary{margin-top:35px}
 @media(max-height:740px){.app-view{padding-top:calc(env(safe-area-inset-top) + 25px)}.heading-row{margin:12px 0}.action-tile{min-height:99px}.panel{padding:14px}.title-bar{margin-bottom:15px}.flow-bottom{margin-top:13px}}
 
+
+/* iPhone full-viewport sizing and proportions based on the reference screenshot */
+html {
+  width:100%;
+  height:100%;
+  height:100lvh;
+  background:#1b1b1b;
+  overscroll-behavior:none;
+}
+body {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:100lvh;
+  margin:0;
+  overflow:hidden;
+  background:#1b1b1b;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+#screen {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:100lvh;
+  max-width:none;
+  margin:0;
+  overflow:hidden;
+  border:0;
+  border-radius:0;
+  -webkit-transform:translateZ(0);
+}
+#page {
+  box-sizing:border-box;
+  height:100%;
+  min-height:0;
+  padding-top:calc(env(safe-area-inset-top, 0px) + 6px);
+  padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 98px);
+}
+.top {gap:12px;padding:0 16px 22px}
+.search {font-size:15px}
+.notice {margin:0 16px 26px;min-height:72px}
+.notice strong {font-size:14px;font-weight:650}
+.wallet-head {margin:0 16px 16px}
+.wallet-head h1 {font-size:25px;font-weight:720;letter-spacing:-.55px}
+.cards {
+  padding:0 16px;
+  gap:8px;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
+}
+.smallstack {flex:0 0 60px;width:60px;min-width:60px}
+.card,.card.primary {
+  box-sizing:border-box;
+  flex:0 0 132px;
+  min-width:132px;
+  width:132px;
+  height:177px;
+  padding:15px;
+}
+.card .amount {font-size:14.2px;letter-spacing:-.45px}
+.card.primary .amount {font-size:13px;letter-spacing:-.55px}
+.card small {font-size:12px;line-height:1.35}
+.promo {
+  margin:18px 8px 12px;
+  min-height:105px;
+  padding:16px 15px;
+}
+.promo strong {font-size:15px;font-weight:640}
+.promo p {font-size:13px}
+.history {padding:21px 16px 12px}
+.hrow h2 {font-size:21px}
+.trans .name {font-size:14px}
+.sum {font-size:15px}
+.tabs {left:0;right:0;bottom:0;width:100%;z-index:10}
+.tab {font-size:11px}
+.tab b {font-size:24px}
+.app-view {
+  padding-top:calc(env(safe-area-inset-top, 0px) + 13px);
+  padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 118px);
+}
+#phone-view,#transfer-view,#confirm-view,#result-view {
+  padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 28px);
+}
+#stamp {bottom:calc(env(safe-area-inset-bottom, 0px) + 78px)}
+.flow-mode #stamp {bottom:calc(env(safe-area-inset-bottom, 0px) + 12px)}
+@media(min-width:600px) {
+  #screen {
+    width:100%;
+    height:100%;
+    min-height:100lvh;
+    margin:0;
+    border:0;
+    border-radius:0;
+  }
+}
+@supports not (height: 100lvh) {
+  html,body,#screen {height:100vh;min-height:100vh}
+}
+
 </style>
 </head>
 <body>
@@ -399,6 +502,13 @@ button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disa
  $('finish-flow').addEventListener('click',()=>view('home'));
  // Вся логика работает локально, сетевых запросов с введёнными данными нет.
 })();
+// Reset scroll restored by Safari so that the first view matches the source layout.
+const walletStrip=document.querySelector('.cards');
+if(walletStrip) walletStrip.scrollLeft=0;
+window.addEventListener('pageshow',()=>{
+  const strip=document.querySelector('.cards');
+  if(strip) strip.scrollLeft=0;
+});
 window.setTimeout(()=>document.getElementById('launch').classList.add('hide'),1300);
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 </script>
