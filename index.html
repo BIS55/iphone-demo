@@ -67,6 +67,68 @@
 .disclaimer{font-size:10px;color:#bfd2c4;opacity:.7;margin:14px 16px 0}
 @media(min-width:600px){#screen{border:1px solid #444;border-radius:14px;margin:10px auto;height:calc(100dvh - 20px)}}
 @media(prefers-reduced-motion:reduce){#launch{transition:none}}
+
+/* Интерактивные экраны перевода; все действия локальные, никаких запросов к банку */
+button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disabled{opacity:.44;cursor:not-allowed}
+.tab{cursor:pointer}.tab:focus-visible,.action-tile:focus-visible,.action-primary:focus-visible{outline:2px solid #45cc74}
+.app-view{position:absolute;inset:0;z-index:5;overflow-y:auto;overscroll-behavior:contain;background:#111;padding:calc(env(safe-area-inset-top) + 50px) 16px calc(env(safe-area-inset-bottom) + 115px);scrollbar-width:none}
+.app-view[hidden]{display:none!important}
+#payments-view{background:linear-gradient(180deg,#182c28 0%,#101515 27%,#111 47%,#111 100%)}
+#phone-view,#transfer-view,#confirm-view,#result-view{z-index:16;background:#111;padding-bottom:calc(env(safe-area-inset-bottom) + 24px)}
+.flow-mode .tabs{display:none}
+.flow-mode #stamp{bottom:calc(env(safe-area-inset-bottom) + 12px)}
+.view-top{display:flex;align-items:center;gap:13px;min-height:45px;margin-bottom:23px}
+.view-top .search{font-size:16px}
+.view-top .avatar{flex-shrink:0}
+.view-top .top-icon{margin-left:auto}
+.heading-row{display:flex;align-items:center;justify-content:space-between;margin:21px 0 22px}
+.heading-row h2{font-size:28px;margin:0;font-weight:720}
+.panel{background:#202020;border-radius:18px;margin-bottom:12px;padding:18px}
+.total-panel{display:flex;align-items:center;gap:16px;font-size:14px}
+.total-panel .round{width:46px;height:46px;font-size:23px}
+.total-panel strong{display:block;font-size:20px;margin-bottom:3px}
+.muted{color:#888}.soft{color:#c6c6c6}
+.action-wide{display:block;border:0;background:#202020;width:100%;padding:14px;border-radius:0 0 16px 16px;text-align:center;font-size:15px;margin:-9px 0 24px}
+.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 0 17px}
+.action-tile{background:#202020;border:0;border-radius:18px;padding:18px 16px;min-height:117px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;font-size:15px;font-weight:580}
+.tile-icon{font-size:25px;line-height:1}
+.panel h3{font-size:20px;margin:4px 0 21px}
+.favorites{display:flex;justify-content:space-between;gap:8px;text-align:center}
+.favorite{flex:1;min-width:0;font-size:12px;color:#dedede}
+.favorite .round{margin:0 auto 10px;border-radius:12px;width:53px;height:53px;font-size:23px}
+.quick-transfer{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:#303030;border:0;border-radius:14px;padding:13px 15px;margin-top:17px;font-size:15px;text-align:left}
+.arrow-pill{display:grid;place-items:center;background:#139332;border-radius:13px;width:47px;height:42px;font-size:29px;font-weight:700}
+.title-bar{position:relative;display:flex;justify-content:center;align-items:center;min-height:49px;margin:-7px 0 28px}
+.title-bar h2{font-size:21px;margin:0;font-weight:690}
+.back{position:absolute;left:0;top:0;background:none;border:0;padding:4px 5px;font-size:35px;line-height:40px}
+.pills{display:flex;gap:10px;margin-bottom:25px}
+.pill{border:0;background:#2b2b2b;padding:12px 16px;border-radius:13px;font-size:16px}
+.pill.disabled{opacity:.45;background:transparent}
+.field{display:block;background:#242424;border-radius:15px;padding:13px 16px;margin:0 0 18px}
+.field label,.field .fieldlabel{display:block;font-size:13px;color:#8c8c8c;margin-bottom:8px}
+.field:focus-within label,.field:focus-within .fieldlabel{color:#23a844}
+.field input,.field select,.field textarea{width:100%;border:0;background:transparent;outline:none;color:white;font-size:19px;line-height:1.4;padding:0;min-width:0}
+.field input::placeholder,.field textarea::placeholder{color:#a5a5a5}
+.field select{font-size:16px;appearance:none;padding-right:16px}
+.field select option{color:#161616;background:#f8f8f8}
+.scan-hint{font-size:15px;color:#0b9d30;margin:16px 2px}
+.microcopy{font-size:12px;color:#929292;line-height:1.5}
+.flow-bottom{position:sticky;bottom:0;display:flex;align-items:center;background:linear-gradient(0deg,#111 85%,transparent);padding:20px 0 calc(env(safe-area-inset-bottom) + 6px);margin-top:35px}
+.action-primary{width:100%;border:0;background:#118e2b;color:#fff;border-radius:14px;min-height:56px;font-size:19px;font-weight:650}
+.bank-choice{display:flex;gap:9px;margin:9px 0 22px}
+.bank-choice button{flex:1;border-radius:13px;border:2px solid transparent;background:#272727;min-height:82px;font-size:14px;padding:10px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left}
+.bank-choice button.active{border-color:#129e39}
+.bank-choice button .bank-bubble{display:grid;place-items:center;background:#4a4a4a;color:#ddd;border-radius:50%;font-size:20px;width:30px;height:30px}
+.amount-shortcuts{display:flex;gap:8px;margin:-8px 0 22px;flex-wrap:wrap}
+.amount-shortcuts button{background:#303030;border:0;border-radius:24px;padding:9px 15px;font-size:14px}
+.summary-line{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #333;padding:14px 0;font-size:15px;gap:16px}
+.summary-line .muted{flex:0 0 115px}.summary-line strong{text-align:right;font-weight:540;overflow-wrap:anywhere}
+.result-symbol{margin:55px auto 23px;width:76px;height:76px;border-radius:50%;background:#24462b;display:grid;place-items:center;font-size:35px;color:#86e6a0}
+.center{text-align:center}
+.center h2{font-size:25px}.center p{line-height:1.6;color:#aaa}
+#result-view .action-primary{margin-top:35px}
+@media(max-height:740px){.app-view{padding-top:calc(env(safe-area-inset-top) + 25px)}.heading-row{margin:12px 0}.action-tile{min-height:99px}.panel{padding:14px}.title-bar{margin-bottom:15px}.flow-bottom{margin-top:13px}}
+
 </style>
 </head>
 <body>
@@ -88,6 +150,7 @@
  <div class="smallstack"><div>▣</div><div>♢</div></div>
  <div class="card primary"><div><span class="bankmark"></span><small id="first-card-digits">6699</small></div><div><div id="first-balance" class="amount">8 546 219,87 ₽</div><small id="first-account-name">Счёт •• 3797</small></div></div>
  <div class="card"><div class="cred-title">Внесите до 30.11<br><span id="due-card">8 924,35 ₽</span><br><br>▰</div><div><div id="credit-balance" class="amount">384 219,62 ₽</div><small id="credit-name">Кредитная •• 8353</small></div></div>
+ <div class="card reserve"><div class="cred-title"><span class="bankmark"></span><br>Дополнительный счёт</div><div><div class="amount" id="reserve-balance">132 000,00 ₽</div><small id="reserve-name">Счёт •• 5128</small></div></div>
  <div class="card"><div class="cred-title"><span class="bankmark"></span><br>Специальные предложения</div><div><div class="amount">МАКЕТ</div><small>Не настоящий счёт</small></div></div>
 </section>
 <section class="promo"><div><strong>Накопления от 7 500 ₽</strong><p>Узнайте больше<br>о своих возможностях</p></div><span class="cta">Узнать</span></section>
@@ -100,12 +163,76 @@
 <p class="disclaimer">Визуальный макет. Данные вымышлены. Банковские операции недоступны.</p>
 </div>
 <nav class="tabs" aria-label="Статичное меню">
- <div class="tab active"><b>⬟</b><span>Главный</span></div>
+ <div class="tab active" data-tab="home" role="button" tabindex="0"><b>⬟</b><span>Главный</span></div>
  <div class="tab"><b>▥</b><span>Накопления</span></div>
  <div class="tab"><b>✿</b><span>Для жизни</span></div>
- <div class="tab"><b>▣</b><span>Платежи</span></div>
+ <div class="tab" data-tab="payments" role="button" tabindex="0"><b>▣</b><span>Платежи</span></div>
  <div class="tab"><b>▤</b><span>Кредиты</span></div>
 </nav>
+
+<section id="payments-view" class="app-view" hidden aria-label="Платежи">
+ <header class="view-top"><div class="avatar">●</div><div class="search"><i class="mag"></i>Поиск</div><span class="top-icon">✧</span></header>
+ <div class="heading-row"><h2>Платежи</h2><span style="font-size:24px">◉　⋯</span></div>
+ <div class="panel total-panel"><div class="round">⌂</div><div><strong id="payment-total">116 937,54 ₽</strong><span class="muted">Дом · 4 счёта</span></div></div>
+ <button type="button" class="action-wide">Посмотреть все</button>
+ <div class="action-grid">
+  <button class="action-tile" type="button" id="scan-qr"><span class="tile-icon">▧</span><span>Сканировать QR или телефон</span></button>
+  <button class="action-tile" type="button" id="mobile-entry"><span class="tile-icon" style="color:#27b6ec">◉</span><span>Оплатить мобильную связь</span></button>
+ </div>
+ <div class="panel"><h3>Недавно платили</h3><div class="favorites">
+ <div class="favorite"><div class="round">₽</div>Автоплатежи</div><div class="favorite"><div class="round" style="color:#22aee5">●</div>Связь</div>
+ <div class="favorite"><div class="round">✸</div>Интернет</div><div class="favorite"><div class="round">⊕</div>Сохранить</div>
+ </div></div>
+ <div class="panel"><h3>Перевести</h3>
+ <button type="button" id="start-transfer" class="quick-transfer"><span>На Сбер или в другой банк</span><span class="arrow-pill">→</span></button>
+ <div class="favorites" style="margin-top:16px"><div class="favorite"><div class="round">↕</div>Между счетами</div><div class="favorite"><div class="round">◎</div>В другую страну</div><div class="favorite"><div class="round">☆</div>Избранное</div></div>
+ </div>
+ <p class="microcopy">МАКЕТ · Все суммы и получатели вымышленные. Реальные переводы недоступны.</p>
+</section>
+<section id="phone-view" class="app-view" hidden aria-label="Новый перевод: номер">
+ <div class="title-bar"><button type="button" class="back" data-back="payments" aria-label="Назад">‹</button><h2>Новый перевод</h2></div>
+ <div class="pills"><span class="pill">По России</span><span class="pill disabled">В другую страну</span></div>
+ <div class="field"><label for="phone-input" style="color:#13a440">По телефону</label><input id="phone-input" type="tel" inputmode="tel" autocomplete="off" maxlength="18" placeholder="+7 (999) 999-99-99"></div>
+ <p class="scan-hint">▣ &nbsp; Сканировать карту</p>
+ <p class="microcopy">Введите вымышленный номер для проверки сценария. Данные никуда не отправляются.</p>
+ <div class="flow-bottom"><button id="phone-next" type="button" class="action-primary" disabled>Продолжить</button></div>
+</section>
+<section id="transfer-view" class="app-view" hidden aria-label="Новый перевод: сумма и счёт">
+ <div class="title-bar"><button type="button" class="back" data-back="phone" aria-label="Назад">‹</button><h2>Новый перевод</h2></div>
+ <div class="field"><span class="fieldlabel">По телефону</span><div id="recipient-display" style="font-size:18px">+7 (999) 999-99-99</div></div>
+ <div class="bank-choice" role="group" aria-label="Банк получателя">
+  <button type="button" data-bank="Банк получателя" class="active"><span class="bank-bubble">⌂</span>Банк получателя</button>
+  <button type="button" data-bank="Другой банк"><span class="bank-bubble">▥</span>Другой банк</button>
+  <button type="button" data-bank="Другая страна" disabled><span class="bank-bubble">◎</span>Другая страна</button>
+ </div>
+ <div class="field"><label for="amount-input">Сколько</label><input id="amount-input" type="text" inputmode="decimal" autocomplete="off" placeholder="0" maxlength="15"></div>
+ <div class="amount-shortcuts"><button type="button" data-amount="500">500 ₽</button><button type="button" data-amount="1000">1 000 ₽</button><button type="button" data-amount="2000">2 000 ₽</button></div>
+ <div class="field"><label for="from-account">Откуда</label><select id="from-account" aria-label="Счёт списания"></select></div>
+ <p id="available-text" class="microcopy"></p><p id="amount-error" class="microcopy" role="status" style="color:#f09b8d"></p>
+ <div class="field"><label for="transfer-message">Сообщение (необязательно)</label><input id="transfer-message" type="text" maxlength="140" placeholder="Сообщение получателю"></div>
+ <p class="microcopy">Все действия на этой странице — моделирование. Платёжные системы не используются.</p>
+ <div class="flow-bottom"><button type="button" id="transfer-next" class="action-primary" disabled>Продолжить</button></div>
+</section>
+<section id="confirm-view" class="app-view" hidden aria-label="Подтверждение сценария перевода">
+ <div class="title-bar"><button type="button" class="back" data-back="transfer" aria-label="Назад">‹</button><h2>Проверка перевода</h2></div>
+ <div class="panel">
+  <h3 style="margin-bottom:10px">Проверьте данные</h3>
+  <div class="summary-line"><span class="muted">Номер</span><strong id="confirm-phone"></strong></div>
+  <div class="summary-line"><span class="muted">Банк</span><strong id="confirm-bank"></strong></div>
+  <div class="summary-line"><span class="muted">Счёт</span><strong id="confirm-account"></strong></div>
+  <div class="summary-line"><span class="muted">Сумма</span><strong id="confirm-amount"></strong></div>
+  <div class="summary-line"><span class="muted">Сообщение</span><strong id="confirm-message">—</strong></div>
+ </div>
+ <p class="microcopy">МАКЕТ: нажатие кнопки завершит только проверку интерфейса. Никакого реального перевода не будет.</p>
+ <div class="flow-bottom"><button type="button" class="action-primary" id="mock-confirm">Проверить сценарий</button></div>
+</section>
+<section id="result-view" class="app-view" hidden aria-label="Завершение сценария">
+ <div class="result-symbol">✓</div>
+ <div class="center"><h2>Сценарий завершён</h2><p>Это макет приложения. Перевод не осуществлён, деньги не списаны. Введённые сведения никуда не отправлялись.</p></div>
+ <div class="panel"><div class="summary-line"><span class="muted">Номер</span><strong id="result-phone"></strong></div>
+ <div class="summary-line"><span class="muted">Сумма</span><strong id="result-amount"></strong></div></div>
+ <button type="button" class="action-primary" id="finish-flow">Вернуться на главную</button>
+</section>
 <div id="stamp" aria-label="Вымышленные данные">МАКЕТ</div>
 <div id="launch" role="img" aria-label="Заставка макета приложения">
 <svg class="emblem" viewBox="0 0 200 200" aria-hidden="true">
@@ -134,6 +261,8 @@
   const set = (id,value) => { const el=document.getElementById(id); if(el) el.textContent=value; };
   const accountDigits=digits();
   const creditDigits=digits();
+  const reserveDigits=digits();
+  const reserveBalance=random(5100000,19500000);
   // Начальный счёт всегда больше 8 млн ₽.
   const firstBalance=random(805000000,1495000000);
   const creditBalance=random(22500000,48500000);
@@ -143,6 +272,9 @@
   set('first-card-digits',accountDigits);
   set('first-account-name','Счёт •• '+accountDigits);
   set('credit-name','Кредитная •• '+creditDigits);
+  set('reserve-balance',rub(reserveBalance));
+  set('reserve-name','Счёт •• '+reserveDigits);
+  window.mockAccounts=[{digits:accountDigits,kopecks:firstBalance},{digits:reserveDigits,kopecks:reserveBalance}];
   set('due-banner','Внесите '+rub(due)+' до 30.11');
   set('due-card',rub(due));
   set('transaction-1',rub(random(89500,685000)));
@@ -151,6 +283,120 @@
   // Сумма и последние цифры перевода соответствуют карточкам выше.
   const transfer=document.getElementById('transfer-name');
   transfer.firstChild.textContent='Счёт •• '+accountDigits+' → Карта •• '+creditDigits;
+})();
+
+(function(){
+ const $ = id => document.getElementById(id);
+ const views={payments:$('payments-view'),phone:$('phone-view'),transfer:$('transfer-view'),confirm:$('confirm-view'),result:$('result-view')};
+ let current='home', phone='', bank='Банк получателя';
+ const rub = kop => new Intl.NumberFormat('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2}).format(kop/100)+' ₽';
+ const number = input => input.replace(/\D/g,'');
+ const phoneFormat = raw => {
+   let n=number(raw);
+   if(n.startsWith('8')) n='7'+n.slice(1);
+   if(!n.startsWith('7')) n='7'+n;
+   n=n.slice(0,11);
+   const d=n.slice(1);
+   let out='+7';
+   if(d.length) out+=' ('+d.slice(0,3);
+   if(d.length>=3) out+=')';
+   if(d.length>3) out+=' '+d.slice(3,6);
+   if(d.length>6) out+='-'+d.slice(6,8);
+   if(d.length>8) out+='-'+d.slice(8,10);
+   return out;
+ };
+ function view(name){
+   current=name;
+   $('page').hidden=name!=='home';
+   Object.entries(views).forEach(([key,node])=>node.hidden=key!==name);
+   $('screen').classList.toggle('flow-mode',name!=='home'&&name!=='payments');
+   document.querySelectorAll('[data-tab]').forEach(el=>el.classList.toggle('active',el.dataset.tab===name||(el.dataset.tab==='payments'&&name!=='home')));
+   window.scrollTo(0,0);
+   if(views[name]) views[name].scrollTop=0;
+ }
+ function selectAccounts(){
+   const el=$('from-account');
+   el.replaceChildren();
+   window.mockAccounts.forEach((account,i)=>{
+      const option=document.createElement('option');
+      option.value=String(i);
+      option.textContent='Счёт •• '+account.digits+' · '+rub(account.kopecks);
+      el.appendChild(option);
+   });
+   updateAmount();
+ }
+ function parseAmount(){
+   const raw=$('amount-input').value.trim().replace(/\s/g,'').replace(',','.');
+   if(!/^\d+(\.\d{0,2})?$/.test(raw)) return 0;
+   return Math.round(Number(raw)*100);
+ }
+ function updateAmount(){
+   const a=window.mockAccounts[Number($('from-account').value)||0];
+   if(!a)return;
+   const val=parseAmount(),max=a.kopecks;
+   $('available-text').textContent='Доступно: '+rub(max);
+   $('amount-error').textContent=val>max?'Недостаточно средств на выбранном счёте':'';
+   $('transfer-next').disabled=!(val>0&&val<=max);
+   $('transfer-next').textContent=val>0?'Продолжить · '+rub(val):'Продолжить';
+ }
+ function beginPhone(){
+   $('phone-input').value='';
+   $('phone-next').disabled=true;
+   view('phone');
+   $('phone-input').focus({preventScroll:true});
+ }
+ document.querySelectorAll('[data-tab]').forEach(el=>{
+   const cb=()=>view(el.dataset.tab);
+   el.addEventListener('click',cb);
+   el.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();cb()}});
+ });
+ $('start-transfer').addEventListener('click',beginPhone);
+ $('mobile-entry').addEventListener('click',beginPhone);
+ $('scan-qr').addEventListener('click',beginPhone);
+ document.querySelectorAll('[data-back]').forEach(el=>el.addEventListener('click',()=>view(el.dataset.back)));
+ $('phone-input').addEventListener('input',()=>{
+   const value=phoneFormat($('phone-input').value);
+   $('phone-input').value=value;
+   $('phone-next').disabled=!/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
+ });
+ $('phone-next').addEventListener('click',()=>{
+   if($('phone-next').disabled)return;
+   phone=$('phone-input').value;
+   $('recipient-display').textContent=phone;
+   $('amount-input').value='';
+   $('transfer-message').value='';
+   bank='Банк получателя';
+   document.querySelectorAll('[data-bank]').forEach(el=>el.classList.toggle('active',el.dataset.bank===bank));
+   selectAccounts();
+   view('transfer');
+ });
+ document.querySelectorAll('[data-bank]').forEach(el=>el.addEventListener('click',()=>{
+   bank=el.dataset.bank;
+   document.querySelectorAll('[data-bank]').forEach(btn=>btn.classList.toggle('active',btn===el));
+ }));
+ document.querySelectorAll('[data-amount]').forEach(el=>el.addEventListener('click',()=>{
+   $('amount-input').value=el.dataset.amount;
+   updateAmount();
+ }));
+ $('amount-input').addEventListener('input',updateAmount);
+ $('from-account').addEventListener('change',updateAmount);
+ $('transfer-next').addEventListener('click',()=>{
+   if($('transfer-next').disabled)return;
+   const a=window.mockAccounts[Number($('from-account').value)];
+   $('confirm-phone').textContent=phone;
+   $('confirm-bank').textContent=bank;
+   $('confirm-account').textContent='Счёт •• '+a.digits;
+   $('confirm-amount').textContent=rub(parseAmount());
+   $('confirm-message').textContent=$('transfer-message').value||'—';
+   view('confirm');
+ });
+ $('mock-confirm').addEventListener('click',()=>{
+   $('result-phone').textContent=phone;
+   $('result-amount').textContent=rub(parseAmount());
+   view('result');
+ });
+ $('finish-flow').addEventListener('click',()=>view('home'));
+ // Вся логика работает локально, сетевых запросов с введёнными данными нет.
 })();
 window.setTimeout(()=>document.getElementById('launch').classList.add('hide'),1300);
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
